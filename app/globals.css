@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/*
+ * Workpool brand tokens — see docs/STYLE.md before adding anything here.
+ * Three core colors; everything else is derived from them.
+ */
+@theme {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  /* Core */
+  --color-accent: #4b69b1;
+  --color-floor: #131213;
+  --color-peak: #e9e6e5;
+
+  /* Derived — accent */
+  --color-accent-deep: #3c5590; /* hover / pressed */
+  --color-accent-bright: #6f8bcf; /* accent on the dark floor */
+  --color-accent-mist: #dde3f0; /* soft blue surface */
+
+  /* Derived — neutrals */
+  --color-paper: #f5f3f2; /* raised surface on peak (cards, inputs) */
+  --color-floor-raised: #1e1d1e; /* raised surface on floor */
+  --color-ink-muted: #5c595a; /* secondary text on light */
+  --color-peak-muted: #a19d9c; /* secondary text on dark */
+  --color-line: #d6d2d1; /* hairlines on light */
+  --color-line-dark: #2c2a2b; /* hairlines on dark */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-peak text-floor font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent text-peak;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+
+  /* Poppins everywhere — form controls don't inherit by default */
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
